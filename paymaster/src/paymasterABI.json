@@ -1,0 +1,21 @@
+[
+  "constructor(address _entryPoint, address _verifyingSigner)",
+  "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
+  "function addStake(uint32 unstakeDelaySec) payable",
+  "function deposit() payable",
+  "function entryPoint() view returns (address)",
+  "function getDeposit() view returns (uint256)",
+  "function getHash(tuple(address sender, uint256 nonce, bytes initCode, bytes callData, uint256 callGasLimit, uint256 verificationGasLimit, uint256 preVerificationGas, uint256 maxFeePerGas, uint256 maxPriorityFeePerGas, bytes paymasterAndData, bytes signature) userOp, uint48 validUntil, uint48 validAfter) view returns (bytes32)",
+  "function owner() view returns (address)",
+  "function pack(tuple(address sender, uint256 nonce, bytes initCode, bytes callData, uint256 callGasLimit, uint256 verificationGasLimit, uint256 preVerificationGas, uint256 maxFeePerGas, uint256 maxPriorityFeePerGas, bytes paymasterAndData, bytes signature) userOp) pure returns (bytes ret)",
+  "function parsePaymasterAndData(bytes paymasterAndData) pure returns (uint48 validUntil, uint48 validAfter, bytes signature)",
+  "function postOp(uint8 mode, bytes context, uint256 actualGasCost)",
+  "function renounceOwnership()",
+  "function senderNonce(address) view returns (uint256)",
+  "function transferOwnership(address newOwner)",
+  "function unlockStake()",
+  "function validatePaymasterUserOp(tuple(address sender, uint256 nonce, bytes initCode, bytes callData, uint256 callGasLimit, uint256 verificationGasLimit, uint256 preVerificationGas, uint256 maxFeePerGas, uint256 maxPriorityFeePerGas, bytes paymasterAndData, bytes signature) userOp, bytes32 userOpHash, uint256 maxCost) returns (bytes context, uint256 validationData)",
+  "function verifyingSigner() view returns (address)",
+  "function withdrawStake(address withdrawAddress)",
+  "function withdrawTo(address withdrawAddress, uint256 amount)"
+]
