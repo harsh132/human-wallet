@@ -1,0 +1,4 @@
+[
+  "function getChannel(bytes32 channelId) view returns (address sender_signer, address recipient_signer, uint256 lockedAmount)",
+  "function getCloseRequest(bytes32 channelId) view returns (uint256 index, uint256 senderHasAmount, uint256 waitTillBlock, bool side) "
+]

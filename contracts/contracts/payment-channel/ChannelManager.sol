@@ -27,14 +27,28 @@ contract ChannelManager {
   }
 
   // channelId = keccak256(abi.encode(sender_signer, recipient_signer, token))
-  mapping(bytes32 => Channel) public channels; // channelId => lockedAmount
-  mapping(bytes32 => CloseRequest) public closeRequests;
+  mapping(bytes32 => Channel) private channels; // channelId => lockedAmount
+  mapping(bytes32 => CloseRequest) private closeRequests;
 
   event ChannelCreated(address indexed sender, address indexed recipient, address indexed token, uint256 amount);
   event ChannelClosed(address indexed sender, address indexed recipient, address indexed token, uint256 senderHasAmount, uint256 recipientHasAmount);
 
   constructor(uint256 _waitingTimeInBlocks) {
     waitingTimeInBlocks = _waitingTimeInBlocks;
+  }
+
+  function getChannelId(address sender, address recipient, address token) public pure returns (bytes32 channelId) {
+    channelId = keccak256(abi.encode(sender, recipient, token));
+  }
+
+  function getChannel(bytes32 channelId) external view returns (address sender_signer, address recipient_signer, uint256 lockedAmount) {
+    Channel memory channel = channels[channelId];
+    return (channel.sender_signer, channel.recipient_signer, channel.lockedAmount);
+  }
+
+  function getCloseRequest(bytes32 channelId) external view returns (uint256 index, uint256 senderHasAmount, uint256 waitTillBlock, bool side) {
+    CloseRequest memory closeRequest = closeRequests[channelId];
+    return (closeRequest.index, closeRequest.senderHasAmount, closeRequest.waitTillBlock, closeRequest.side);
   }
 
   function isValidSignatureNow(address wallet, address signer, bytes32 hash, bytes memory signature) internal view returns (bool) {

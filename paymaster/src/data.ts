@@ -9,6 +9,7 @@ const chainData = {
     paymaster: '0x23AcBd5539e9335675DF337462FB8f3fc0777937',
     entryPoints: ['0x0576a174D229E3cFA37253523E645A78A0C91B57'],
     acceptedTokens: [],
+    channelManager: '0x0',
   },
 }
 
